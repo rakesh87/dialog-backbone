@@ -1,1 +1,65 @@
+<%#= javascript_include_tag "example" %>
 <div id="container">Loading.....</div>
+<div class="addme"></div>
+<div class="addme2"></div>
+<script type='text/javascript'>
+  
+(function($){
+
+	var ListView = Backbone.View.extend({
+
+	  el: $('.addme'),
+
+	  events: {
+	  	'click button#add': 'addItem'
+	  },
+
+	  initialize: function(){
+	    _.bindAll(this, 'render', 'addItem'); 
+	    this.counter = 0;
+	    this.render();
+	  },
+
+	  render: function(){
+	  	$(this.el).append("<button id='add'>Add list item</button>");
+	    $(this.el).append("<ul> </ul>");
+	  },
+
+	  addItem: function(){
+	    this.counter++;
+	    $('ul', this.el).append("<li>hello Rakesh"+this.counter+"</li>");
+	  }
+});
+
+	var ListSecond = Backbone.View.extend({
+		el: $('.addme2'),
+
+		events: {
+	  	'click button#add2': 'addItem'
+	  },
+
+	  initialize: function(){
+	    _.bindAll(this, 'render', 'addItem'); 
+	    this.counter = 0;
+	    this.render();
+	  },
+
+	  render: function(){
+	  	$(this.el).append("<button id='add2'>Add list item</button>");
+	    $(this.el).append("<ul> </ul>");
+	  },
+
+	  addItem: function(){
+	    this.counter++;
+	    $('ul', this.el).append("<li>hello Rakesh2"+this.counter+"</li>");
+	  }
+	});
+
+	new ListSecond();
+
+
+  var listView = new ListView();
+
+})(jQuery);
+
+</script>
